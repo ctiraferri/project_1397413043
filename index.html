@@ -643,15 +643,16 @@
   #page2 .op-list { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
   #page2 .op-card { background:var(--bg-card); border:1px solid var(--border-dim); border-left:3px solid transparent; padding:10px 14px; transition:background 0.15s; }
   #page2 .op-card:hover { background:var(--bg-hover); }
-  #page2 .op-card.size3 { border-left-color:var(--red); }
-  #page2 .op-card.size2 { border-left-color:var(--yellow); }
+  #page2 .op-card.size3 { border-left-color:var(--border); }
+  #page2 .op-card.size2 { border-left-color:var(--border); }
   #page2 .op-top { display:flex; align-items:flex-start; gap:10px; margin-bottom:7px; }
-  #page2 .op-size { flex-shrink:0; width:36px; height:36px; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px solid; }
-  #page2 .op-size.s3 { border-color:var(--red-brd); background:var(--red-dim); }
-  #page2 .op-size.s2 { border-color:var(--yellow-brd); background:var(--yellow-dim); }
+  #page2 .op-size { flex-shrink:0; width:36px; height:36px; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px solid var(--border-dim); }
+  #page2 .op-size.s3 { border-color:var(--border-dim); background:transparent; }
+  #page2 .op-size.s2 { border-color:var(--border-dim); background:transparent; }
   #page2 .op-size-num { font-family:var(--font-display); font-size:20px; line-height:1; }
-  #page2 .op-size.s3 .op-size-num { color:var(--red); }
-  #page2 .op-size.s2 .op-size-num { color:var(--yellow); }
+  #page2 .op-size.s3 .op-size-num { color:var(--text-dim); }
+  #page2 .op-size.s2 .op-size-num { color:var(--text-dim); }
+  #insight04 .hl-r { color:var(--text-main); }
   #page2 .op-size-label { font-family:var(--font-mono); font-size:7px; color:var(--text-faint); letter-spacing:1px; }
   #page2 .op-meta { flex:1; min-width:0; }
   #page2 .op-title { font-family:var(--font-ui); font-size:13px; font-weight:600; color:var(--text-main); line-height:1.3; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -1202,10 +1203,10 @@
             </div>
           </div>
           <div class="stats-row" id="stats04">
-            <div class="stat-box"><div class="stat-label">OPERACIONES ACTIVAS</div><div class="stat-val red" id="s04-ops">—</div><div class="stat-sub">narrativas coordinadas</div></div>
-            <div class="stat-box"><div class="stat-label">MEDIOS INVOLUCRADOS</div><div class="stat-val accent" id="s04-media">—</div><div class="stat-sub">operadores únicos</div></div>
-            <div class="stat-box"><div class="stat-label">POSIBLES OPERADORES RECURRENTES</div><div class="stat-val yellow" id="s04-recur">—</div><div class="stat-sub">en 2+ operaciones</div></div>
-            <div class="stat-box"><div class="stat-label">MAYOR ALCANCE</div><div class="stat-val red" id="s04-max">—</div><div class="stat-sub" id="s04-maxsub">medios</div></div>
+            <div class="stat-box"><div class="stat-label">OPERACIONES ACTIVAS</div><div class="stat-val" id="s04-ops">—</div><div class="stat-sub">narrativas coordinadas</div></div>
+            <div class="stat-box"><div class="stat-label">MEDIOS INVOLUCRADOS</div><div class="stat-val" id="s04-media">—</div><div class="stat-sub">operadores únicos</div></div>
+            <div class="stat-box"><div class="stat-label">POSIBLES OPERADORES RECURRENTES</div><div class="stat-val" id="s04-recur">—</div><div class="stat-sub">en 2+ operaciones</div></div>
+            <div class="stat-box"><div class="stat-label">MAYOR ALCANCE</div><div class="stat-val" id="s04-max">—</div><div class="stat-sub" id="s04-maxsub">medios</div></div>
           </div>
           <div class="section-label">// OPERACIONES DETECTADAS</div>
           <div class="op-list" id="opList04"></div>
