@@ -1865,8 +1865,8 @@ function renderFeed(d) {
         <div class="mention-domain">${m.domain}</div>
         <div class="mention-time">${formatDate(m.date)} · ${m.time}</div>
       </div>
-      <div class="mention-title">${m.title||'Sin título'}</div>
-      <div class="mention-preview">${m.content||''}</div>
+      <div class="mention-title">${m.title||(m.full_text?m.full_text.substring(0,90)+'…':'Sin título')}</div>
+      <div class="mention-preview">${m.content||m.full_text||''}</div>
       <span class="mention-cat">${m.category||''}</span>
     </div>`).join('');
 }
@@ -1922,7 +1922,7 @@ function renderDrawerMentions(mentions, terms) {
     return;
   }
   body.innerHTML = mentions.sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time)).map(m => {
-    let preview = m.content || '';
+    let preview = m.content || m.full_text || '';
     terms.forEach(t => {
       const re = new RegExp(`(${t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
       preview = preview.replace(re, '<span class="drawer-highlight">$1</span>');
@@ -1933,7 +1933,7 @@ function renderDrawerMentions(mentions, terms) {
         <div class="drawer-mention-domain">${m.domain}</div>
         <div class="drawer-mention-time">${formatDate(m.date)} · ${m.time}</div>
       </div>
-      <div class="drawer-mention-title">${m.title||'Sin título'}</div>
+      <div class="drawer-mention-title">${m.title||(m.full_text?m.full_text.substring(0,90)+'…':'Sin título')}</div>
       <div class="drawer-mention-preview">${preview}</div>
       <div class="drawer-mention-footer">
         <span class="mention-cat">${m.category}</span>
