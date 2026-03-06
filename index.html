@@ -1193,7 +1193,7 @@
         <!-- IND.04 -->
         <div class="panel" id="panel-ind04">
           <div class="panel-header" data-color="red">
-            <div class="panel-title">IND. 04 — POSIBLES OPERACIONES COORDINADAS</div>
+            <div class="panel-title">IND. 04 — POSIBLES NARRATIVAS COORDINADAS</div>
             <div class="help-btn r">?
               <div class="help-tooltip">
                 <div class="help-tt-title">// ¿QUÉ ES UNA OPERACIÓN?</div>
@@ -1203,8 +1203,8 @@
             </div>
           </div>
           <div class="stats-row" id="stats04">
-            <div class="stat-box"><div class="stat-label">OPERACIONES ACTIVAS</div><div class="stat-val" id="s04-ops">—</div><div class="stat-sub">narrativas coordinadas</div></div>
-            <div class="stat-box"><div class="stat-label">MEDIOS INVOLUCRADOS</div><div class="stat-val" id="s04-media">—</div><div class="stat-sub">operadores únicos</div></div>
+            <div class="stat-box"><div class="stat-label">COORDINACIONES ACTIVAS</div><div class="stat-val" id="s04-ops">—</div><div class="stat-sub">narrativas coordinadas</div></div>
+            <div class="stat-box"><div class="stat-label">ACTORES INVOLUCRADOS</div><div class="stat-val" id="s04-media">—</div><div class="stat-sub">operadores únicos</div></div>
             <div class="stat-box"><div class="stat-label">POSIBLES OPERADORES RECURRENTES</div><div class="stat-val" id="s04-recur">—</div><div class="stat-sub">en 2+ operaciones</div></div>
             <div class="stat-box"><div class="stat-label">MAYOR ALCANCE</div><div class="stat-val" id="s04-max">—</div><div class="stat-sub" id="s04-maxsub">medios</div></div>
           </div>
@@ -2467,8 +2467,8 @@ function lpRenderInd04() {
 
   const recNames = recurring.map(r=>`<span class="hl-r">${r.domain}</span>`).join(' y ');
   document.getElementById('insight04').innerHTML =
-    `⚡ Se detectaron <span class="hl-r">${stats.total_ops||0} operaciones coordinadas</span> con ` +
-    `<span class="hl-a">${stats.total_media||0} medios operadores</span>` +
+    `⚡ Se detectaron <span class="hl-r">${stats.total_ops||0} posibles coordinaciones</span> de ` +
+    `<span class="hl-a">${stats.total_media||0} actores</span>` +
     (recNames ? ` · ${recNames} aparecen en 2+ operaciones distintas` : '') + '.';
 }
 
