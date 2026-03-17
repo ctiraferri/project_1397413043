@@ -654,6 +654,7 @@
   #page2 .eff-bar-wrap { height:2px; background:var(--border-dim); width:100%; }
   #page2 .eff-bar-fill { height:100%; }
   #page2 .eff-sub { font-family:var(--font-mono); font-size:9px; color:var(--text-dim); line-height:1.4; }
+  #page2 .eff-men-inline { font-size:55%; opacity:0.5; font-weight:400; letter-spacing:0; }
   #page2 .eff-interp { font-family:var(--font-mono); font-size:8px; letter-spacing:1px; padding:2px 5px; display:inline-block; margin-top:2px; }
   #page2 .interp-high { color:var(--green); background:var(--green-dim); }
   #page2 .interp-mid  { color:var(--yellow); background:var(--yellow-dim); }
@@ -935,6 +936,7 @@
   #page3 .eff-bar-wrap { height:2px; background:var(--border-dim); width:100%; }
   #page3 .eff-bar-fill { height:100%; }
   #page3 .eff-sub { font-family:var(--font-mono); font-size:9px; color:var(--text-dim); line-height:1.4; }
+  #page3 .eff-men-inline { font-size:55%; opacity:0.5; font-weight:400; letter-spacing:0; }
   #page3 .eff-interp { font-family:var(--font-mono); font-size:8px; letter-spacing:1px; padding:2px 5px; display:inline-block; margin-top:2px; }
   #page3 .interp-high { color:var(--green); background:var(--green-dim); }
   #page3 .interp-mid  { color:var(--yellow); background:var(--yellow-dim); }
@@ -1227,6 +1229,7 @@
   #page4 .eff-bar-wrap { height:2px; background:var(--border-dim); width:100%; }
   #page4 .eff-bar-fill { height:100%; }
   #page4 .eff-sub { font-family:var(--font-mono); font-size:9px; color:var(--text-dim); line-height:1.4; }
+  #page4 .eff-men-inline { font-size:55%; opacity:0.5; font-weight:400; letter-spacing:0; }
   #page4 .eff-interp { font-family:var(--font-mono); font-size:8px; letter-spacing:1px; padding:2px 5px; display:inline-block; margin-top:2px; }
   #page4 .interp-high { color:var(--green); background:var(--green-dim); }
   #page4 .interp-mid  { color:var(--yellow); background:var(--yellow-dim); }
@@ -2820,6 +2823,8 @@ function closeDrawer() {
   document.getElementById('drawer').classList.remove('open');
 }
 
+
+
 // ══════════════════════════════════════════
 // MODAL
 // ══════════════════════════════════════════
@@ -3270,9 +3275,8 @@ function o_lpRenderCards03() {
         <div class="eff-rank">#${i+1}</div>
       </div>
       <div class="eff-name" title="${r.name}">${r.name}</div>
-      <div class="eff-score ${ec}">${o_lpFmtK(r.followers)}</div>
+      <div class="eff-score ${ec}">${o_lpFmtK(r.followers)} <span class="eff-men-inline">/ ${r.mentions} Men.</span></div>
       <div class="eff-bar-wrap"><div class="eff-bar-fill" style="width:${barPct}%;background:${barColor}"></div></div>
-      <div class="eff-sub">${r.mentions} mención${r.mentions!==1?'es':''}</div>
     </div>`;
   }).join('');
 
@@ -4132,9 +4136,8 @@ function p3RenderCards03() {
         <div class="eff-rank">#${i+1}</div>
       </div>
       <div class="eff-name" title="${r.name}">${r.name}</div>
-      <div class="eff-score ${ec}">${lpFmtK(r.followers)}</div>
+      <div class="eff-score ${ec}">${lpFmtK(r.followers)} <span class="eff-men-inline">/ ${r.mentions} Men.</span></div>
       <div class="eff-bar-wrap"><div class="eff-bar-fill" style="width:${barPct}%;background:${barColor}"></div></div>
-      <div class="eff-sub">${r.mentions} mención${r.mentions!==1?'es':''}</div>
     </div>`;
   }).join('');
 
