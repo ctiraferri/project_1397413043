@@ -46,7 +46,7 @@
     font-family: var(--font-ui);
     font-size: 15px;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: auto;
   }
   body::before {
     content:''; position:fixed; inset:0; z-index:0;
@@ -60,7 +60,7 @@
     background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);
     pointer-events:none;
   }
-  .wrapper { position:relative; z-index:1; max-width:1680px; margin:0 auto; padding:16px 20px 30px; overflow-x:hidden; }
+  .wrapper { position:relative; z-index:1; max-width:1680px; margin:0 auto; padding:16px 20px 30px; overflow-x:auto; }
 
   /* HEADER */
   header {
@@ -535,9 +535,10 @@
   #page2 .page-subtitle { font-family:var(--font-mono); font-size:9px; letter-spacing:2px; color:var(--text-dim); }
   #page2 .page-period { font-family:var(--font-mono); font-size:9px; letter-spacing:2px; color:var(--text-faint); text-align:right; }
   #page2 .listening-grid { position:relative; z-index:1; display:grid; grid-template-columns:1fr; gap:16px; }
+  #page2 .listening-grid > *, #page2 .row-1 > *, #page2 .row-3 > * { min-width:0; }
   #page2 .row-1 { display:grid; grid-template-columns:3fr 2fr; gap:16px; }
   #page2 .row-3 { display:grid; grid-template-columns:3fr 2fr; gap:16px; }
-  #page2 .panel { background:var(--bg-panel); border:1px solid var(--border); padding:16px 18px; }
+  #page2 .panel { background:var(--bg-panel); border:1px solid var(--border); padding:16px 18px; overflow:hidden; }
   #page2 .panel-header { display:flex; align-items:center; gap:8px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-dim); }
   #page2 .panel-title { font-family:var(--font-mono); font-size:10px; letter-spacing:3px; color:var(--text-dim); flex:1; }
   #page2 .panel-header[data-color="yellow"]::before { content:''; width:3px; height:10px; flex-shrink:0; background:var(--yellow); box-shadow:0 0 6px var(--yellow); }
@@ -672,7 +673,7 @@
   #page2 .interp-low  { color:var(--text-faint); background:var(--red-dim); }
   /* IND.04 */
   #page2 .stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:18px; }
-  #page2 .stat-box { background:var(--bg-card); border:1px solid var(--border-dim); padding:10px 14px; }
+  #page2 .stat-box { background:var(--bg-card); border:1px solid var(--border-dim); padding:10px 14px; min-width:0; overflow:hidden; }
   #page2 .stat-label { font-family:var(--font-mono); font-size:8px; letter-spacing:2px; color:var(--text-faint); margin-bottom:4px; }
   #page2 .stat-val { font-family:var(--font-display); font-size:28px; line-height:1; }
   #page2 .stat-val.red    { color:var(--red); }
@@ -713,7 +714,7 @@
   /* IND.05 */
   #page2 .total-block { text-align:center; padding:10px 0 14px; border-bottom:1px solid var(--border-dim); margin-bottom:14px; }
   #page2 .total-label { font-family:var(--font-mono); font-size:9px; letter-spacing:3px; color:var(--text-faint); margin-bottom:4px; }
-  #page2 .total-val { font-family:var(--font-display); font-size:48px; color:var(--text-main); line-height:1; }
+  #page2 .total-val { font-family:var(--font-display); font-size:48px; color:var(--text-main); line-height:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   #page2 .total-sub { font-family:var(--font-mono); font-size:9px; color:var(--text-main); margin-top:3px; }
   #page2 .cards-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
   #page2 .reach-card { background:var(--bg-card); border:1px solid var(--border-dim); padding:12px 14px; }
@@ -743,7 +744,7 @@
   #page2 .bar-leg-text { font-family:var(--font-mono); font-size:9px; color:var(--text-dim); }
   #page2 .sparkline-wrap { position:relative; margin-bottom:6px; }
   #page2 .peak-row { display:flex; gap:8px; margin-bottom:14px; }
-  #page2 .peak-card { flex:1; background:var(--bg-card); border:1px solid var(--border-dim); padding:8px 10px; }
+  #page2 .peak-card { flex:1; min-width:0; background:var(--bg-card); border:1px solid var(--border-dim); padding:8px 10px; overflow:hidden; }
   #page2 .peak-label { font-family:var(--font-mono); font-size:8px; letter-spacing:1px; color:var(--text-faint); margin-bottom:3px; }
   #page2 .peak-val   { font-family:var(--font-display); font-size:18px; }
   #page2 .peak-val.p { color:var(--purple); }
@@ -1394,6 +1395,11 @@
   .narrativa-ia-adj-tag { display:inline-block; padding:4px 12px; border:1px solid var(--accent); border-radius:4px; font-size:11px; color:var(--accent); letter-spacing:1px; cursor:pointer; transition:background 0.2s; }
   .narrativa-ia-adj-tag:hover { background:rgba(0,212,255,0.15); }
   .narrativa-ia-adj-ctx { font-size:10px; color:var(--text-dim); margin-top:6px; }
+  .narrativa-ia-ejes { list-style:none; padding:4px 0 0 12px; margin:4px 0 0; }
+  .narrativa-ia-ejes li { padding:2px 0; font-size:10px; color:var(--text-dim); border-bottom:none; }
+  .narrativa-ia-eje-bullet { color:#e05555; margin-right:4px; font-size:8px; }
+  .narrativa-ia-eje-count { color:#8ba3b8; font-size:9px; }
+  .narrativa-ia-eje-detalle { font-style:italic; }
 </style>
 </head>
 <body>
@@ -4756,10 +4762,23 @@ function renderNarrativaIA(data) {
     document.getElementById('niaPositivas').innerHTML = '<div class="narrativa-ia-loading">Sin narrativas positivas en crecimiento</div>';
   }
 
+  // Negativas en Crecimiento (con ejes de negatividad)
   const neg = data.negativas_crecieron || [];
   if (neg.length) {
     document.getElementById('niaNegativas').innerHTML = '<ul class="narrativa-ia-narr-list">' +
-      neg.map(n => `<li><strong>${esc(n.nombre)}</strong> — ${n.conteo_actual||0} menciones <span class="narrativa-ia-delta narrativa-ia-delta-up">▲ ${n.delta_pct||0}%</span><br><span style="font-size:10px;color:var(--text-dim)">${esc(n.descripcion)}</span></li>`).join('') +
+      neg.map(n => {
+        let h = `<li><strong>${esc(n.nombre)}</strong> — ${n.conteo_actual||0} menciones <span class="narrativa-ia-delta narrativa-ia-delta-up">▲ ${n.delta_pct||0}%</span><br><span style="font-size:10px;color:var(--text-dim)">${esc(n.descripcion)}</span>`;
+        const ejes = n.ejes || [];
+        if (ejes.length) {
+          h += '<ul class="narrativa-ia-ejes">';
+          ejes.forEach(e => {
+            h += `<li><span class="narrativa-ia-eje-bullet">●</span><strong>${esc(e.eje)}</strong> <span class="narrativa-ia-eje-count">(${e.menciones||0} menciones)</span> — <span class="narrativa-ia-eje-detalle">${esc(e.detalle)}</span></li>`;
+          });
+          h += '</ul>';
+        }
+        h += '</li>';
+        return h;
+      }).join('') +
       '</ul>';
   } else {
     document.getElementById('niaNegativas').innerHTML = '<div class="narrativa-ia-loading">Sin narrativas negativas en crecimiento</div>';
