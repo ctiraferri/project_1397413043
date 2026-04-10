@@ -5389,10 +5389,11 @@ function xaRenderBursts() {
     el.innerHTML = '<div class="xa-burst-empty">// No se detectaron ráfagas con 20+ cuentas en 15 min</div>';
     return;
   }
-  // Deduplicate overlapping bursts: keep top 10 by distinct_handles
+  // Sort by date desc, deduplicate overlapping bursts, keep top 10
+  const sorted = [...bursts].sort((a, b) => (b.window_start || '').localeCompare(a.window_start || ''));
   const seen = new Set();
-  const unique = bursts.filter(b => {
-    const key = b.handles.sort().join(',');
+  const unique = sorted.filter(b => {
+    const key = [...b.handles].sort().join(',');
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -5482,7 +5483,8 @@ function xaOpenTypeC() {
   const sentCol = {positive:'var(--green)',neutral:'var(--neutral)',negative:'var(--red)'};
   const body = document.getElementById('drawerBody');
 
-  const bursts = xaData.bursts;
+  // Sort bursts by date descending (most recent first)
+  const bursts = [...xaData.bursts].sort((a, b) => (b.window_start || '').localeCompare(a.window_start || ''));
   let totalMentions = 0;
   let html = '';
 
